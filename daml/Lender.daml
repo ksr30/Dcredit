@@ -1,0 +1,29 @@
+module Lender where
+
+import DataStructure
+
+template FinalAgreement
+  with
+    proposalDetails : ProposalDetails
+    lender : Party
+    borrower : Party
+
+  where
+    signatory lender,borrower
+    
+
+template Proposal
+  with
+    proposalDetails : ProposalDetails
+    borrower : Party
+    lender : Party
+    finalAgreement : FinalAgreement
+  where
+    signatory finalAgreement.lender
+    observer finalAgreement.borrower
+
+    controller finalAgreement.borrower can
+      Accept_Offer : ContractId FinalAgreement
+        
+        do
+          create finalAgreement

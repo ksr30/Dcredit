@@ -1,0 +1,26 @@
+module DataStructure where
+
+data PersonalDetails = PersonalDetails with
+  uid : Int
+  name : Text
+  phone_no : Int
+  address : Text
+  e_main : Text
+   deriving (Eq, Show)
+
+data LoanRequirementDetails = LoanRequirementDetails with
+  loan_type : Text
+  amount_requirement : Int
+    deriving (Eq, Show)
+
+data CollateralDetails = CollateralDetails with
+    collateral : Text
+      deriving (Eq, Show)
+
+data ProposalDetails = ProposalDetails with
+  loan_amount_granted :Int
+  loan_Interest:Decimal
+  repayment_year :Int
+  installment_amount:Decimal
+  penalty_charges:Decimal
+    deriving (Eq, Show)

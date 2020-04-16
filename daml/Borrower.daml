@@ -1,0 +1,23 @@
+module Borrower where
+
+import DataStructure
+import ValidationAuthority
+
+template IntialLoanRequest
+  with
+    personalDetails : PersonalDetails
+    loanRequirementDetails : LoanRequirementDetails
+    collateralDetails : CollateralDetails
+    validationAuthority : Party
+    borrower : Party
+    verifedRequest : VerifedRequest
+      
+  where
+    signatory verifedRequest.borrower
+    observer verifedRequest.validationAuthority
+
+    controller validationAuthority can
+      Verify : ContractId VerifedRequest
+        
+        do
+          create verifedRequest
